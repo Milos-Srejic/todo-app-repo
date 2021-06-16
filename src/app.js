@@ -32,4 +32,21 @@ window.onload = function () {
       addForm.querySelector('input').value = '';
     }
   });
+
+  // SEARCH TODO
+  const searchForm = document.forms['search-form'].querySelector('input');
+
+  searchForm.addEventListener('keyup', function (e) {
+    const term = e.target.value.toLowerCase();
+    const todos = list.getElementsByTagName('li');
+
+    Array.from(todos).forEach((todo) => {
+      const todoName = todo.firstElementChild.textContent;
+      if (todoName.toLowerCase().indexOf(term) != -1) {
+        todo.style.display = 'flex';
+      } else {
+        todo.style.display = 'none';
+      }
+    });
+  });
 };
